@@ -1,0 +1,49 @@
+swagger: '2.0'
+info:
+  title: Salary Prediction API
+  description: API to predict salary based on position level using polynomial regression.
+  version: "1.0"
+host: "127.0.0.1:5000"
+schemes:
+  - "http"
+paths:
+  /:
+    get:
+      summary: Home Page
+      responses:
+        200:
+          description: Home page
+  /home:
+    get:
+      summary: Home Page
+      responses:
+        200:
+          description: Home page
+  /predict:
+    post:
+      summary: Predict the salary based on the position level.
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            type: object
+            required:
+              - Num1
+            properties:
+              value:
+                type: number
+                description: Position level
+                example: 6.5
+      responses:
+        200:
+          description: Prediction result
+          schema:
+            type: object
+            properties:
+              prediction:
+                type: number
+                description: Predicted salary
+                example: 150000
+        400:
+          description: Invalid input
